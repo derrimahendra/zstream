@@ -99,6 +99,9 @@ defmodule Zstream do
   """
   @spec zip([entry]) :: Enumerable.t()
   def zip(entries) do
+    IO.inspect("========entries")
+    IO.inspect(entries)
+    IO.inspect("========entries")
     Stream.concat([
       [{:start}],
       Stream.flat_map(entries, fn %{stream: stream, name: name, options: options} ->
