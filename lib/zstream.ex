@@ -1,4 +1,6 @@
 defmodule Zstream do
+  require Logger
+
   @moduledoc """
   Module for creating ZIP file stream
 
@@ -99,6 +101,8 @@ defmodule Zstream do
   """
   @spec zip([entry]) :: Enumerable.t()
   def zip(entries) do
+    Logger.info("entries: #{inspect(entries)}")
+
     Stream.concat([
       [{:start}],
       Stream.flat_map(entries, fn %{stream: stream, name: name, options: options} ->
